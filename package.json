@@ -1,6 +1,6 @@
 
 {
-  "name": "react-native-shared-preferences",
+  "name": "react-native-android-shared-preferences",
   "version": "1.0.0",
   "description": "React Native Shared Preferences Module to be used in Android apps. As of now, no support for iOS is added up, as this is a wrapper module for Android SharedPreferences.",
   "main": "index.js",
