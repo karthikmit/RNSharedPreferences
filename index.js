@@ -1,6 +1,7 @@
+import PreferencesWrapper from './preferences_wrapper';
 
-import { NativeModules } from 'react-native';
-
-const { RNSharedPreferences } = NativeModules;
-
-export default RNSharedPreferences;
+export default {
+    getSharedPreferences: (prefName) => {
+        return new PreferencesWrapper(prefName);
+    }
+};

@@ -19,4 +19,18 @@ public class RNSharedPreferencesModule extends ReactContextBaseJavaModule {
   public String getName() {
     return "RNSharedPreferences";
   }
+
+  @ReactMethod
+  public String getString(String prefName, String keyName) {
+    SharedPreferences sharedPreferences = this.reactContext.getSharedPreferences(prefName);
+
+    return sharedPreferences.getString(keyName);
+  }
+
+  @ReactMethod
+  public Boolean putString(String prefName, String keyName, String value) {
+    SharedPreferences sharedPreferences = this.reactContext.getSharedPreferences(prefName);
+
+    return sharedPreferences.sharedPreferences.edit().putString(keyName, value).commit();
+  }
 }
