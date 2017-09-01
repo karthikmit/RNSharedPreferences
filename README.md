@@ -1,6 +1,15 @@
 
 # react-native-shared-preferences
 
+Simple react native plugin for accessing Android SharedPreferences.
+
+ getSharedPreferences should be called with a proper preferences file name. So, essentially every SharedPreferences JS Object is bound with a single preferences file.
+
+ After getting the instance, methods like putString, getString shall be called as given in the Usage section.
+
+ Since this plugin simply wraps the Android SharedPreferences, all the thread safety and performance guarantees will be intact.
+
+
 ## Getting started
 
 `$ npm install react-native-android-shared-preferences --save`
@@ -30,7 +39,16 @@
 ```javascript
 import RNSharedPreferences from 'react-native-android-shared-preferences';
 
-// TODO: What to do with the module?
-RNSharedPreferences;
+var sharedPreferences = RNSharedPreferences.getSharedPreferences("userInfo");
+sharedPreferences.putString("name", "Karthik", (result) => {
+ // Should return true here, if PUT is successful.
+ console.log("PUT result :: " + result);
+});
+
+console.log(sharedPreferences.getString("name", (result) => {
+     // Should return Karthik here ...
+     console.log("Get result :: " + result);
+}));
+
 ```
   
