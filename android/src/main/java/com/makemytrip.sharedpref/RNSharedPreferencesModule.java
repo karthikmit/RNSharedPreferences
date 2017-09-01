@@ -1,5 +1,6 @@
+package com.makemytrip.sharedpref;
 
-package com.reactlibrary;
+import android.content.SharedPreferences;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -21,16 +22,18 @@ public class RNSharedPreferencesModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public String getString(String prefName, String keyName) {
-    SharedPreferences sharedPreferences = this.reactContext.getSharedPreferences(prefName);
+  public void getString(String prefName, String keyName, Callback resultCallback) {
+    SharedPreferences sharedPreferences = this.reactContext.getSharedPreferences(prefName, 0);
 
-    return sharedPreferences.getString(keyName);
+    String result = sharedPreferences.getString(keyName, "");
+    resultCallback.invoke(result);
   }
 
   @ReactMethod
-  public Boolean putString(String prefName, String keyName, String value) {
-    SharedPreferences sharedPreferences = this.reactContext.getSharedPreferences(prefName);
+  public void putString(String prefName, String keyName, String value, Callback resultCallback) {
+    SharedPreferences sharedPreferences = this.reactContext.getSharedPreferences(prefName, 0);
 
-    return sharedPreferences.sharedPreferences.edit().putString(keyName, value).commit();
+    boolean commitResult = sharedPreferences.edit().putString(keyName, value).commit();
+    resultCallback.invoke(commitResult);
   }
 }

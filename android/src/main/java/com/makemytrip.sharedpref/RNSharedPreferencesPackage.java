@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package com.makemytrip.sharedpref;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -13,16 +13,11 @@ import com.facebook.react.bridge.JavaScriptModule;
 public class RNSharedPreferencesPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-      return Arrays.<NativeModule>asList(new RNSharedPreferencesModule(reactContext));
-    }
-
-    @Override
-    public List<Class<? extends JavaScriptModule>> createJSModules() {
-      return Collections.emptyList();
+        return Arrays.<NativeModule>asList(new RNSharedPreferencesModule(reactContext));
     }
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-      return Collections.emptyList();
+        return Collections.emptyList();
     }
 }

@@ -6,15 +6,16 @@ class PreferencesWrapper {
 
     constructor(prefFileName) {
         this.prefFileName = prefFileName;
-        this.sharedPreferences = RNSharedPreferences.getSharedPreferences(this.prefFileName);
     }
 
-    getString(keyName) {
-        this.sharedPreferences.getString(keyName);
+    getString(keyName, callback) {
+        console.log("Key to retrieve :: " + keyName);
+        return RNSharedPreferences.getString(this.prefFileName, keyName, callback);
     }
 
-    putString(keyName, value) {
-        this.sharedPreferences.putString(keyName, value);
+    putString(keyName, value, callback) {
+        console.log("Key to put :: " + keyName + " And Value is :: " + value);
+        return RNSharedPreferences.putString(this.prefFileName, keyName, value, callback);
     }
 }
 
